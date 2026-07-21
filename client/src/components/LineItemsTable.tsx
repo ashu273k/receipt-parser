@@ -1,5 +1,5 @@
-import React, { KeyboardEvent } from 'react';
-import { LineItem } from '../types';
+import { type KeyboardEvent } from 'react';
+import type { LineItem } from '../types';
 import './LineItemsTable.css';
 
 interface LineItemsTableProps {

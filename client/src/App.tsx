@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { UploadScreen } from './components/UploadScreen';
 import { ReceiptReviewForm } from './components/ReceiptReviewForm';
 import { HistoryView } from './components/HistoryView';
-import { ParsedReceipt } from './types';
+import type { ParsedReceipt } from './types';
 import './App.css';
 
 type Screen = 'upload' | 'review' | 'history';

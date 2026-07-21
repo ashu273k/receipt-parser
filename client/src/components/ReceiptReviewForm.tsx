@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ParsedReceipt } from '../types';
+import { useState, useEffect, type FormEvent } from 'react';
+import type { ParsedReceipt } from '../types';
 import { LineItemsTable } from './LineItemsTable';
 import { computeMathCheck } from '../mathCheck';
 import './ReceiptReviewForm.css';
@@ -35,7 +35,7 @@ export function ReceiptReviewForm({ initialData, parseFailed, onSaveSuccess }: R
     setData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSave = async (e: React.FormEvent) => {
+  const handleSave = async (e: FormEvent) => {
     e.preventDefault();
     setSaving(true);
     try {

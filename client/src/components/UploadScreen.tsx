@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { ParsedReceipt } from '../types';
+import { useState, useRef, type DragEvent, type ChangeEvent } from 'react';
+import type { ParsedReceipt } from '../types';
 import './UploadScreen.css';
 
 interface UploadScreenProps {
@@ -13,7 +13,7 @@ export function UploadScreen({ onExtractSuccess }: UploadScreenProps) {
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleDrag = (e: React.DragEvent) => {
+  const handleDrag = (e: DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (e.type === "dragenter" || e.type === "dragover") {
@@ -23,7 +23,7 @@ export function UploadScreen({ onExtractSuccess }: UploadScreenProps) {
     }
   };
 
-  const handleDrop = (e: React.DragEvent) => {
+  const handleDrop = (e: DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
@@ -40,7 +40,7 @@ export function UploadScreen({ onExtractSuccess }: UploadScreenProps) {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
       handleFile(e.target.files[0]);

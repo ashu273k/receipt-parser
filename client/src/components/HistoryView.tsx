@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { SavedReceipt } from '../types';
+import { useEffect, useState } from 'react';
+import type { SavedReceipt } from '../types';
 import './HistoryView.css';
 
 export function HistoryView() {
