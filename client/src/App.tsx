@@ -1,22 +1,66 @@
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { UploadScreen } from './components/UploadScreen';
+import { ReceiptReviewForm } from './components/ReceiptReviewForm';
+import { HistoryView } from './components/HistoryView';
+import { ParsedReceipt } from './types';
+import './App.css';
+
+type Screen = 'upload' | 'review' | 'history';
 
 function App() {
-  const [status, setStatus] = useState<string>('Loading...');
+  const [currentScreen, setCurrentScreen] = useState<Screen>('upload');
+  const [parsedData, setParsedData] = useState<ParsedReceipt | null>(null);
+  const [parseFailed, setParseFailed] = useState(false);
 
-  useEffect(() => {
-    fetch('/api/health')
-      .then((res) => res.json())
-      .then((data) => setStatus(data.status))
-      .catch((err) => {
-        console.error(err);
-        setStatus('API Error');
-      });
-  }, []);
+  const handleExtractSuccess = (data: ParsedReceipt | null, failed: boolean) => {
+    setParsedData(data);
+    setParseFailed(failed);
+    setCurrentScreen('review');
+  };
+
+  const handleSaveSuccess = () => {
+    setParsedData(null);
+    setParseFailed(false);
+    setCurrentScreen('upload');
+  };
 
   return (
-    <div>
-      <h1>Receipt Parser</h1>
-      <p>Server Status: {status}</p>
+    <div className="app-container">
+      <header className="app-header">
+        <h1>Receipt Parser</h1>
+        <nav className="app-nav">
+          <button 
+            className={`nav-btn ${currentScreen === 'upload' || currentScreen === 'review' ? 'active' : ''}`}
+            onClick={() => setCurrentScreen('upload')}
+          >
+            Upload
+          </button>
+          <button 
+            className={`nav-btn ${currentScreen === 'history' ? 'active' : ''}`}
+            onClick={() => setCurrentScreen('history')}
+          >
+            History
+          </button>
+        </nav>
+      </header>
+
+      <main className="app-main">
+        {currentScreen === 'upload' && (
+          <UploadScreen onExtractSuccess={handleExtractSuccess} />
+        )}
+        
+        {currentScreen === 'review' && (
+          <ReceiptReviewForm 
+            initialData={parsedData} 
+            parseFailed={parseFailed} 
+            onSaveSuccess={handleSaveSuccess}
+          />
+        )}
+
+        {currentScreen === 'history' && (
+          <HistoryView />
+        )}
+      </main>
     </div>
   );
 }

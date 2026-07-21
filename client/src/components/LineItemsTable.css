@@ -1,0 +1,118 @@
+.line-items-wrapper {
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.line-items-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.line-items-table th {
+  text-align: left;
+  padding: 0 0.75rem;
+  font-weight: 500;
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.line-items-table .amount-col {
+  width: 120px;
+}
+.line-items-table .action-col {
+  width: 40px;
+  text-align: center;
+}
+
+.item-row td {
+  background-color: #1f2937;
+  border-top: 1px solid #374151;
+  border-bottom: 1px solid #374151;
+}
+
+.item-row td:first-child {
+  border-left: 1px solid #374151;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding-left: 0.25rem;
+}
+.item-row td:last-child {
+  border-right: 1px solid #374151;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* Confidence highlighting */
+.item-row.conf-low td {
+  background-color: rgba(245, 158, 11, 0.1);
+}
+.item-row.conf-low td:first-child {
+  border-left: 3px solid #f59e0b;
+}
+
+.item-row.conf-medium td {
+  background-color: rgba(252, 211, 77, 0.05);
+}
+.item-row.conf-medium td:first-child {
+  border-left: 3px solid #fcd34d;
+}
+
+.item-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #f3f4f6;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.item-input:focus {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.amount-input {
+  text-align: right;
+  -moz-appearance: textfield;
+}
+.amount-input::-webkit-outer-spin-button,
+.amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+.delete-btn:hover {
+  opacity: 1;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.add-btn {
+  width: 100%;
+  padding: 0.5rem;
+  background: transparent;
+  border: 1px dashed #4b5563;
+  color: #9ca3af;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.25rem;
+  transition: all 0.2s;
+}
+
+.add-btn:hover {
+  border-color: #6b7280;
+  color: #d1d5db;
+  background-color: rgba(255, 255, 255, 0.02);
+}
